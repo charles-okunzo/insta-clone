@@ -1,0 +1,22 @@
+{% extends 'insta_app/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2 mx-auto">
+            <h5 class="text-muted">
+                Sign up to see photos and videos from your friends.
+            </h5>
+            <form>
+                {{form|crispy}}
+                <small class="text-muted">People who use our service may have uploaded your contact information to Instagram. <a href="https://www.facebook.com/help/instagram/261704639352628">Learn More</a></small>
+                <small class="text-muted">By signing up, you agree to our <a href="">Terms</a> , <a href="">Data Policy</a> and <a href="">Cookies Policy</a> .</small>
+
+                <input type="submit" value="Sign Up" class="btn btn-info">
+            </form>
+
+            <div>Have an account? <a href="" class="ms-3">Log in</a></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
