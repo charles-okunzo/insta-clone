@@ -2,34 +2,38 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="container-fluid register-bg">
-    <div class="row">
-        <div class="col-md-2 mx-auto mt-5">
-            <img src="{{user.profile.profile_pic.url}}" class="rounded-circle">
-        </div>
-        <div class="col-md-6">
-            <h5>{{user.username}} <a href=""><button class="btn btn-light">Edit profile</button></a></h5>
-            <p>
-                <span>
-                    <h6>20</h6> posts
-                </span>
-                <span>
-                    <h6>200</h6> followers
-                </span>
-                <span>
-                    <h6>30</h6> following
-                </span>
-            </p>
-
-            <h5>{{user.full_name}}</h5>
-
-            <p>Bio</p>
-        </div>
-    </div><hr>
-    <div class="container-fluid">
+<div class="register-bg">
+    <div class="container">
         <div class="row">
-            <div class="col-md-8 mx-auto">
-                All posts
+            <div class="col-md-2"></div>
+            <div class="col-md-2 mt-5">
+                <img src="{{user.profile.profile_pic.url}}" title="Profile picture" style="border-radius: 50%;" height="150" width="150">
+            </div>
+            <div class="col-md-6 mt-5">
+                <h5>{{user.username}} <a href=""><button class="btn btn-light border ms-4">Edit profile</button></a></h5>
+                <p class="my-4">
+                    <span class="me-2">
+                        <span class="h6">20</span> posts
+                    </span>
+                    <span class="mx-2">
+                        <span class="h6">200</span> followers
+                    </span>
+                    <span class="mx-2">
+                        <span class="h6">30</span> following
+                    </span>
+                </p>
+    
+                <h6>{{user.first_name}} {{user.last_name}}</h6>
+    
+                <p>{{user.profile.bio}}</p>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8 mx-auto"><hr>
+                    All posts
+                </div>
             </div>
         </div>
     </div>
