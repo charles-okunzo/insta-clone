@@ -1,3 +1,18 @@
 h1{
     color: red;
 }
+
+.register-bg{
+    background-color: #fafafa;
+}
+small#hint_id_password1, small#hint_id_password2, small#hint_id_username{
+    display: none;
+}
+
+.sign-up{
+    background-color: #fff;
+}
+
+.sign-up input[type='text'], .sign-up input[type='password']{
+    background-color: #fafafa;
+}
