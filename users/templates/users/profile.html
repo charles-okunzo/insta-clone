@@ -1,0 +1,37 @@
+{% extends 'insta_app/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container-fluid register-bg">
+    <div class="row">
+        <div class="col-md-2 mx-auto mt-5">
+            <img src="{{user.profile.profile_pic.url}}" class="rounded-circle">
+        </div>
+        <div class="col-md-6">
+            <h5>{{user.username}} <a href=""><button class="btn btn-light">Edit profile</button></a></h5>
+            <p>
+                <span>
+                    <h6>20</h6> posts
+                </span>
+                <span>
+                    <h6>200</h6> followers
+                </span>
+                <span>
+                    <h6>30</h6> following
+                </span>
+            </p>
+
+            <h5>{{user.full_name}}</h5>
+
+            <p>Bio</p>
+        </div>
+    </div><hr>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                All posts
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

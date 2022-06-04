@@ -15,3 +15,7 @@ def register(request):
             messages.success(request, f'An account for {username} has  been created successfully. You can now login')
             return redirect('login')
     return render(request, 'users/register.html', {'form':form})
+
+
+def profile(request):
+    return render(request, 'users/profile.html')
