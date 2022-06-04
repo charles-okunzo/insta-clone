@@ -1,0 +1,29 @@
+{% extends 'insta_app/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container-fluid register-bg">
+    <div class="row">
+        <div class="col-md-3 mx-auto mt-5">
+            <div class="sign-up border p-3">
+                <div class="text-center">
+                    <img src="../../../static/images/7a252de00b20.png" alt="Instagram Logo" class="my-4">
+                </div>
+                <h4 class="text-center">You have been logged out</h4>
+            </div>
+
+            <div class="border my-4 text-center p-4 text-muted sign-up"><small><a href="{% url 'login' %}" class="ms-3 text-decoration-none">Log in again</a></small></div>
+        
+            <div  class="text-center mb-5">
+                <p>Get the app.</p>
+                <span>
+                    <img src="../../../static/images/applestore.png" alt="Apple store" height="45">
+                </span>
+                <span>
+                    <img src="../../../static/images/googleplaystore.png" alt="Google store" height="45">
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -9,21 +9,17 @@
                 <div class="text-center">
                     <img src="../../../static/images/7a252de00b20.png" alt="Instagram Logo" class="my-4">
                 </div>
-                <h6 class="text-muted text-center my-3">
-                    Sign up to see photos and videos from your friends.
-                </h6>
+                
                 <form method="post">
                     {% csrf_token %}
                     {{form|crispy}}
-                    <small class="text-muted text-center py-3">People who use our service may have uploaded your contact information to Instagram. <a href="https://www.facebook.com/help/instagram/261704639352628">Learn More</a></small><br>
-                    <small class="text-muted text-center py-3">By signing up, you agree to our <a href="">Terms</a> , <a href="">Data Policy</a> and <a href="">Cookies Policy</a> .</small>
-    
+                    
                     <br>
-                    <input type="submit" value="Sign Up" class="btn btn-info my-4 text-white" style="width: 100%;">
+                    <input type="submit" value="Log In" class="btn btn-info my-4 text-white" style="width: 100%;">
                 </form>
             </div>
 
-            <div class="border my-4 text-center p-4 text-muted sign-up"><small>Have an account? <a href="{% url 'login' %}" class="ms-3 text-decoration-none">Log in</a></small></div>
+            <div class="border my-4 text-center p-4 text-muted sign-up"><small>Don't have an account? <a href="{% url 'register' %}" class="ms-3 text-decoration-none">Sign up</a></small></div>
         
             <div  class="text-center mb-5">
                 <p>Get the app.</p>

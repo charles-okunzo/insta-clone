@@ -13,5 +13,5 @@ def register(request):
             form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f'An account for {username} has  been created successfully. You can now login')
-            return redirect('home')
+            return redirect('login')
     return render(request, 'users/register.html', {'form':form})
