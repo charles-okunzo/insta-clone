@@ -1,0 +1,25 @@
+{% extends 'insta_app/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container-fluid register-bg">
+    <div class="row">
+        <div class="col-md-5 mx-auto mt-5">
+            <div class="sign-up border p-3">
+               
+                <form method="post" enctype="multipart/form-data">
+                    <legend>Personal Information</legend>
+                    <img src="{{user.profile.profile_pic.url}}" title="Profile picture" style="border-radius: 50%;" height="50" width="50">
+                    <span class=" ms-4 h5">{{user.username}}</span>
+                    {% csrf_token %}
+                    {{u_form|crispy}}
+                    {{p_form|crispy}}
+
+                    <br>
+                    <input type="submit" value="Update" class="btn btn-info my-4 text-white" style="width: 100%;">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
