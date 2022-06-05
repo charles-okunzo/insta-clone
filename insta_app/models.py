@@ -28,10 +28,14 @@ class Post(models.Model):
     def __str__(self) -> str:
         return f"{self.image_name}"
 
+    @classmethod
+    def search_by_name(cls, search_term):
+        cls.objects.filter(user__username__icontains = search_term).all()
+
 
 class Comment(models.Model):
     content = models.TextField()
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     posted_date = models.DateTimeField(auto_now_add=True, null=True)
 
@@ -42,7 +46,7 @@ class Comment(models.Model):
 
 
 class Like(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='likes')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
