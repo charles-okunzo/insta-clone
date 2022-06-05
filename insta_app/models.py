@@ -12,7 +12,18 @@ class Post(models.Model):
     image_path = models.ImageField(upload_to='post_images/', blank=True)
     image_name = models.CharField(max_length=20)
     image_caption = models.TextField()
-    # profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    posted_date = models.DateTimeField(auto_now_add=True)
+
+
+    def save_post(self):
+        self.save()
+
+
+    def delete_post(self):
+        self.delete()
+    @classmethod
+    def update_caption(cls, image_caption):
+        cls.objects.filter(image_caption = image_caption)
 
     def __str__(self) -> str:
         return f"{self.image_name}"
@@ -20,8 +31,10 @@ class Post(models.Model):
 
 class Comment(models.Model):
     content = models.TextField()
-    image = models.ForeignKey(Post, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    posted_date = models.DateTimeField(auto_now_add=True)
+
 
 
     def __str__(self) -> str:
@@ -29,7 +42,7 @@ class Comment(models.Model):
 
 
 class Like(models.Model):
-    image = models.ForeignKey(Post, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
@@ -47,7 +60,4 @@ class Follow(models.Model):
 
 
 
-# user = User.objects.first()
-# user.post_set.all()
-#related name => post_set
 

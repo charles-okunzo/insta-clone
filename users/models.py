@@ -22,6 +22,17 @@ class Profile(models.Model):
             img.thumbnail(output_size)
             img.save(self.profile_pic.path)
 
+    def save_profile(self):
+        self.save()
+
+    def delete_profile(self):
+        self.delete()
+
+    @classmethod
+    def update_profile(cls, user):
+        cls.objects.filter(user__username = user)
+
+
 
     def __str__(self) -> str:
         return f"{self.user.username} Profile"

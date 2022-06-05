@@ -42,3 +42,7 @@ small#hint_id_password1, small#hint_id_password2, small#hint_id_username{
     opacity: 1;
 }
 
+.pointer{
+    cursor: pointer;
+}
+
