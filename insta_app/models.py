@@ -36,7 +36,7 @@ class Post(models.Model):
 class Comment(models.Model):
     content = models.TextField()
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
     posted_date = models.DateTimeField(auto_now_add=True, null=True)
 
 
@@ -56,8 +56,8 @@ class Like(models.Model):
 
 #Create followers and follow
 class Follow(models.Model):
-    account_following = models.ForeignKey(User, on_delete=models.CASCADE, related_name='followers', null=True)
-    follower = models.ForeignKey(User, on_delete=models.CASCADE, related_name='follower', null=True)
+    following = models.ForeignKey(User, on_delete=models.CASCADE, related_name='following', null=True)
+    followers = models.ForeignKey(User, on_delete=models.CASCADE, related_name='followers', null=True)
 
     def __str__(self) -> str:
         return f"{self.follower}"

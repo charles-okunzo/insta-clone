@@ -1,5 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import redirect, render
+from django.contrib.auth.decorators import login_required
+from insta_app.models import Post
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 
 # Create your views here.
@@ -16,15 +18,16 @@ def register(request):
             return redirect('login')
     return render(request, 'users/register.html', {'form':form})
 
-
+@login_required
 def profile(request):
+    posts = Post.objects.filter(user__username = request.user.username).all()
 
     context = {
-        
+        'posts':posts,
     }
     return render(request, 'users/profile.html', context)
 
-
+@login_required
 def update(request):
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
@@ -39,10 +42,10 @@ def update(request):
     else:
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.profile)
-
+    
     context = {
         'u_form': u_form,
-        'p_form': p_form
+        'p_form': p_form,
     }
 
     return render(request, 'users/update.html', context)
