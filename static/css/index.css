@@ -13,6 +13,10 @@ small#hint_id_password1, small#hint_id_password2, small#hint_id_username{
     background-color: #fff;
 }
 
-.sign-up input[type='text'], .sign-up input[type='password']{
+.sign-up input[type='text'], .sign-up input[type='password'], input.search{
     background-color: #fafafa;
+}
+
+.fa-icon{
+    font-size: 3vh;
 }

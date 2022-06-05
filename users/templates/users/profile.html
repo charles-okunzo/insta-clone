@@ -10,7 +10,7 @@
                 <img src="{{user.profile.profile_pic.url}}" title="Profile picture" style="border-radius: 50%;" height="150" width="150">
             </div>
             <div class="col-md-6 mt-5">
-                <h5>{{user.username}} <a href=""><button class="btn btn-light border ms-4">Edit profile</button></a></h5>
+                <h5>{{user.username}} <a href="{% url 'update' %}"><button class="btn btn-light border ms-4">Edit profile</button></a></h5>
                 <p class="my-4">
                     <span class="me-2">
                         <span class="h6">20</span> posts
@@ -31,8 +31,13 @@
         </div>
         <div class="container-fluid">
             <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <h4><i class="fa-solid fa-table-cells"></i> POSTS</h4>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-md-8 mx-auto"><hr>
-                    All posts
+                    
                 </div>
             </div>
         </div>
