@@ -2,7 +2,7 @@ h1{
     color: red;
 }
 
-.register-bg, html, body, *{
+.register-bg, html, body{
     background-color: #fafafa;
 }
 small#hint_id_password1, small#hint_id_password2, small#hint_id_username{
