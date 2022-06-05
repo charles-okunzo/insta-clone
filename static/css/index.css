@@ -20,3 +20,25 @@ small#hint_id_password1, small#hint_id_password2, small#hint_id_username{
 .fa-icon{
     font-size: 3vh;
 }
+
+.post-div{
+    max-width: 30%; 
+    height: 40vh; 
+    min-height: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.overlay{
+    display: none;
+    opacity: 0;
+    transition: all 500ms ease-in-out;
+}
+
+.overlay:hover{
+    background-color: rgba(0, 0, 0, 0.3);
+    display: block;
+    opacity: 1;
+}
+
