@@ -12,7 +12,7 @@ class Post(models.Model):
     image_path = models.ImageField(upload_to='post_images/', blank=True)
     image_name = models.CharField(max_length=20)
     image_caption = models.TextField()
-    posted_date = models.DateTimeField(auto_now_add=True)
+    posted_date = models.DateTimeField(auto_now_add=True, null=True)
 
 
     def save_post(self):
@@ -33,7 +33,7 @@ class Comment(models.Model):
     content = models.TextField()
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    posted_date = models.DateTimeField(auto_now_add=True)
+    posted_date = models.DateTimeField(auto_now_add=True, null=True)
 
 
 
