@@ -5,12 +5,13 @@
 <div class="container-fluid register-bg">
     <div class="row">
         <!-- posts loop starts -->
-        {% if posts %}
-        {% for post in posts %}
-        <div class="col-md-5 mx-auto mt-5">
+        
+        <div class="col-md-4 mx-auto mt-5">
+          {% if posts %}
+          {% for post in posts %}
 
             <!-- post -->
-            <div class="sign-up border p-3">
+            <div class="sign-up border p-3 my-3">
                 <img src="{{post.user.profile.profile_pic.url}}" title="Profile picture" alt="{{post.user.username}} profile picture" style="border-radius: 50%;" height="30" width="30">
                 <span class=" ms-4 h5">{{post.user.username}}</span>
                 <div class="image my-4">
@@ -19,7 +20,7 @@
 
                 <div class="post-content mb-4">
                     <span class="mx-2 pointer"><i class="fa-solid fa-heart fs-4"></i> {{post.likes.count}} </span>
-                    <span class="mx-2 pointer" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-comment fs-4"></i> {{post.comments.count}}</span>
+                    <span class="mx-2 pointer" data-bs-toggle="modal" data-bs-target="#exampleModal{{post.pk}}"><i class="fa-solid fa-comment fs-4"></i> {{post.comments.count}}</span>
                 </div>
                 <!-- date added -->
                 <small class="text-muted">{{post.posted_date | timesince}} ago</small>
@@ -38,7 +39,7 @@
             </div>
 
             <!-- modal starts -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModal{{post.pk}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                   <div class="modal-content">
                     <div class="modal-body">
@@ -91,11 +92,11 @@
 
             <!-- modal ends -->
           </div>
+          {% empty %}
+          <h3 class="text-center">No posts yets!</h3>
+          {% endfor %}
+          {% endif %}
         </div>
-        {% empty %}
-        <h3 class="text-center">No posts yets!</h3>
-        {% endfor %}
-        {% endif %}
     </div>
 </div>
 {% endblock %}

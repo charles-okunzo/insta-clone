@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
-    image_path = models.ImageField(upload_to='post_images/', blank=True)
+    image_path = models.ImageField(upload_to='post_images/')
     image_name = models.CharField(max_length=20)
     image_caption = models.TextField()
     posted_date = models.DateTimeField(auto_now_add=True, null=True)
@@ -31,6 +31,9 @@ class Post(models.Model):
     @classmethod
     def search_by_name(cls, search_term):
         cls.objects.filter(user__username__icontains = search_term).all()
+
+    def get_absolute_url(self):
+        ...
 
 
 class Comment(models.Model):
