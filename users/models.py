@@ -1,6 +1,8 @@
 from PIL import Image
 from django.db import models
 from django.contrib.auth.models import User
+# from django.contrib.auth.views import LoginView
+# from django import forms
 
 # Create your models here.
 
@@ -37,5 +39,18 @@ class Profile(models.Model):
     def __str__(self) -> str:
         return f"{self.user.username} Profile"
 
+# class UserLoginView(LoginView):
+#     def __init__(self, *args, **kwargs):
+#         super(UserLoginView, self).__init__(*args, **kwargs)
+#         for field_name in self.fields:
+#             field = self.fields.get(field_name)  
+#             if field:
+#                 if type(field.widget) in (forms.TextInput, forms.PasswordInput):
+#                     field.widget = forms.TextInput(attrs={'placeholder': field.label})
+#                     field.widget = forms.PasswordInput(attrs={'placeholder': field.label})
 
+
+#     class Meta:
+#         model = User
+#         fields = ['username', 'password']
 
