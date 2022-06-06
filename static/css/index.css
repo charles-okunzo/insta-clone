@@ -22,7 +22,7 @@ small#hint_id_password1, small#hint_id_password2, small#hint_id_username{
 }
 
 .post-div{
-    max-width: 30%; 
+    /* max-width: 30%;  */
     height: 40vh; 
     min-height: 50%;
     background-repeat: no-repeat;

@@ -31,15 +31,18 @@
     </div>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8 mx-auto">
+            <div class="col-md-9 mx-auto">
                 <h4><i class="fa-solid fa-table-cells"></i> POSTS</h4>
             </div>
         </div>
         </div>
         <div class="row">
-            <div class="col-md-8 mx-auto"><hr>
+            <div class="col-md-9 mx-auto"><hr></div>
+        </div>
+        <div class="row  d-flex align-items-center  justify-content-center">
                 {% if posts %}
                 {% for post in posts %}
+                <div class="col-md-3">
                 <div data-bs-toggle="modal" data-bs-target="#exampleModal{{post.pk}}">
                     <div class="post-div" style="background-image: url({{post.image_path.url}});">
                         <div class="overlay text-white text-center" style="display: grid; place-items: center; height: 100%;">
@@ -103,12 +106,13 @@
                     </div>
                 </div>
                 </div>
+            </div>
                 <!-- user modal ends -->
                 {% empty %}
                 <h3 class="text-center">No posts yets!</h3>
                 {% endfor %}
                 {% endif %}
-            </div>
+            
         </div>
     </div>
 </div>
