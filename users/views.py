@@ -21,6 +21,7 @@ def register(request):
 @login_required
 def profile(request):
     posts = Post.objects.filter(user__username = request.user.username).all()
+    # posts = Post.objects.order_by('-posted_date')
 
     context = {
         'posts':posts,

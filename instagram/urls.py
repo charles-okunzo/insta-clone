@@ -31,7 +31,7 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name = 'users/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name = 'users/logout.html'), name='logout'),
     path('post/new/', PostCreateView.as_view(), name='create-post'),
-    path('post/<int:pk>/update', PostUpdateView.as_view(), name='update-post'),
+    path('post/<int:pk>/update', PostUpdateView.as_view(), name='update-caption'),
     path('post/<int:pk>/delete', PostDeleteView.as_view(), name='delete-post')
 
 

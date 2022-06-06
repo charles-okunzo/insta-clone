@@ -46,11 +46,11 @@ small#hint_id_password1, small#hint_id_password2, small#hint_id_username{
     cursor: pointer;
 }
 
-.register label{
+/* .register label{
     display: none;
-}
+} */
 
 .register input{
-    margin: 5px 0;
+    margin: 1vh 0;
 }
 

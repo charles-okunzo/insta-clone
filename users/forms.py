@@ -8,17 +8,15 @@ from users.models import Profile
 
 class UserRegisterForm(UserCreationForm):
     email = forms.CharField(label='Email')
-    full_name = forms.CharField(max_length=50, label='Fullname')
+    full_name = forms.CharField(max_length=50)
     #add widgets -placeholder
-    def __init__(self, *args, **kwargs):
-        super(UserRegisterForm, self).__init__(*args, **kwargs)
-        for field_name in self.fields:
-            field = self.fields.get(field_name)  
-            if field:
-                if type(field.widget) in (forms.TextInput, forms.PasswordInput):
-                    field.widget = forms.TextInput(attrs={'placeholder': field.label})
-                    field.widget = forms.PasswordInput(attrs={'placeholder': field.label})
-
+    # def __init__(self, *args, **kwargs):
+    #     super(UserRegisterForm, self).__init__(*args, **kwargs)
+    #     for field_name in self.fields:
+    #         field = self.fields.get(field_name)  
+    #         if field:
+    #             if type(field.widget) in (forms.TextInput, forms.PasswordInput):
+    #                 field.widget = forms.TextInput(attrs={'placeholder': field.label})
 
    
 

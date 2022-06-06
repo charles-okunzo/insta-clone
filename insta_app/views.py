@@ -34,7 +34,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     fields = ['image_caption']
-    success_url = '/posts'
+    success_url = '/profile'
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -48,7 +48,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
-    success_url = '/posts'
+    success_url = '/profile'
 
 
     def test_func(self):

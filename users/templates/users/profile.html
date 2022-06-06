@@ -4,10 +4,10 @@
 {% block content %}
 <div class="register-bg">
     <div class="container">
-        <div class="row">
+        <div class="row mt-5 pt-3">
             <div class="col-md-2"></div>
             <div class="col-md-2 mt-5">
-                <img src="{{user.profile.profile_pic.url}}" title="Profile picture" style="border-radius: 50%;" height="150" width="150">
+                <img src="{{user.profile.profile_pic.url}}" class="pointer" title="Profile picture" style="border-radius: 50%;" height="150" width="150">
             </div>
             <div class="col-md-6 mt-5">
                 <h5>{{user.username}} <a href="{% url 'update' %}"><button class="btn btn-light border ms-4">Edit profile</button></a></h5>
@@ -39,12 +39,12 @@
         <div class="row">
             <div class="col-md-9 mx-auto"><hr></div>
         </div>
-        <div class="row  d-flex align-items-center  justify-content-center">
+        <div class="row mx-auto d-flex  justify-content-center" style="width: 65vw;">
                 {% if posts %}
                 {% for post in posts %}
-                <div class="col-md-3">
+                <div class="col-md-4  my-2">
                 <div data-bs-toggle="modal" data-bs-target="#exampleModal{{post.pk}}">
-                    <div class="post-div" style="background-image: url({{post.image_path.url}});">
+                    <div class="post-div pointer" style="background-image: url({{post.image_path.url}});">
                         <div class="overlay text-white text-center" style="display: grid; place-items: center; height: 100%;">
                             <div class="post-content">
                                 <span class="mx-2"><i class="fa-solid fa-heart"></i> {{post.likes.count}}</span>
@@ -69,12 +69,18 @@
                                     <img src="{{user.profile.profile_pic.url}}" title="Profile picture" style="border-radius: 50%;" height="30" width="30">
                                     <span class=" ms-4 h6">{{user.username}}</span>
                                     <button type="button" class="btn-close" style="float: right;" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <div class="mt-2">
+                                    {% if post.user == user %}
+                                        <a href="{% url 'update-caption' post.id%}" class="btn btn-outline-secondary">Update caption</a>
+                                        <a href="{% url 'delete-post' post.id%}" class="btn btn-outline-danger">Delete Post</a>
+                                    {% endif %}
+                                    </div>
                                 </div><hr>
                                     <!-- captions goes here -->
                                 <div>
                                     <img src="{{user.profile.profile_pic.url}}" title="Profile picture" style="border-radius: 50%;" height="30" width="30">
                                     <span class=" ms-4 h6">{{user.username}}</span>
-                                    <span class=" ms-4 h6">{{post.image_caption}}</span>
+                                    <span class=" ms-3">{{post.image_caption}}</span>
                                 </div>
                                 <!-- comments goes here -->
                                 <div class="comments my-3" style="min-height: 40vh;">

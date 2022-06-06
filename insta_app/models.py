@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
     image_path = models.ImageField(upload_to='post_images/')
-    image_name = models.CharField(max_length=20)
+    image_name = models.CharField(max_length=20, blank=True)
     image_caption = models.TextField()
     posted_date = models.DateTimeField(auto_now_add=True, null=True)
 
