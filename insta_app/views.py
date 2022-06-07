@@ -1,5 +1,8 @@
+
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 from insta_app.forms import PostCommentForm
 from insta_app.models import Post
 from django.views.generic import CreateView, UpdateView, DeleteView
@@ -82,3 +85,18 @@ def search_by_name(request):
     else:
         message  = 'You have not searched any items'
         return render(request, 'insta_app/search_accounts.html', {'message':message})
+
+def postLike(request, pk):
+    post_id = request.POST.get('post-id')
+    post = Post.objects.get(pk=post_id)
+    user = request.user
+
+    if post.likes.filter(id=user.id).exists():
+        post.likes.remove(user)
+    else:
+        post.likes.add(user)
+
+    return HttpResponseRedirect(reverse('posts'))
+
+
+

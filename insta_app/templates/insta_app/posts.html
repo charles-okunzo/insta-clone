@@ -19,7 +19,12 @@
                 </div>
 
                 <div class="post-content mb-4">
-                    <span class="mx-2 pointer"><i class="fa-solid fa-heart fs-4"></i> {{post.likes.count}} </span>
+                    <span style="display: inline-block;" class="mx-2 pointer">
+                      <form class="like" action="{% url 'post_like' pk=post.id %}" method="post">
+                        {% csrf_token %}
+                        <button style="border-style: none; background-color: transparent;" type="submit" name="post-id" value="{{post.id}}"><i style="color: red;" class="fa-solid fa-heart fs-4"></i> {{post.likes.count}}</button>
+                      </form>
+                    </span>
                     <span class="mx-2 pointer" data-bs-toggle="modal" data-bs-target="#exampleModal{{post.pk}}"><i class="fa-solid fa-comment fs-4"></i> {{post.comments.count}}</span>
                 </div>
                  <!-- captions goes here -->
@@ -32,7 +37,7 @@
                 <small class="text-muted">{{post.posted_date | timesince}} ago</small>
 
                 <!-- add comment form -->
-                <form class="navbar-form mt-4" role="search" action="" method="post">
+                <form class="navbar-form mt-4" action="" method="post">
 
                     <div class="input-group">
                       <input type="text" class="form-control search" name="comment" placeholder="Add a comment..." name="">
@@ -69,13 +74,19 @@
                             </div>
                             <!-- comments goes here -->
                             <div class="comments my-3" style="min-height: 40vh;">
-                              {% for comment in post.comments.content %}
-                                {{comment}}
+                              {% for comment in post.comments.all %}
+                                <span class="h6 me-2 py-2">{{comment.user}}</span>{{comment.content}}
                                 {% endfor %}
                             </div>
 
                             <div class="post-content mb-4">
-                                <span class="mx-2"><i class="fa-solid fa-heart fs-4"></i> {{post.likes.count}} </span>
+                              <div class="post-content mb-4">
+                                <span style="display: inline-block;" class="mx-2 pointer">
+                                  <form class="like" action="{% url 'post_like' pk=post.id %}" method="post">
+                                    {% csrf_token %}
+                                    <button style="border-style: none; background-color: transparent;" type="submit" name="post-id" value="{{post.id}}"><i style="color: red;" class="fa-solid fa-heart fs-4"></i> {{post.likes.count}}</button>
+                                  </form>
+                                </span>
                                 <span class="mx-2"><i class="fa-solid fa-comment fs-4"></i> {{post.comments.count}}</span>
                             </div>
                             <!-- date added -->

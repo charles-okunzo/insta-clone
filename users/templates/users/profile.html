@@ -88,7 +88,13 @@
                                 </div>
 
                                 <div class="post-content mb-4">
-                                    <span class="mx-2"><i class="fa-solid fa-heart fs-4"></i> {{post.likes.count}} </span>
+                                    <div class="post-content mb-4">
+                                        <span style="display: inline-block;" class="mx-2 pointer">
+                                          <form class="like" action="{% url 'post_like' pk=post.id %}" method="post">
+                                            {% csrf_token %}
+                                            <button style="border-style: none; background-color: transparent;" type="submit" name="post-id" value="{{post.id}}"><i class="fa-solid fa-heart fs-4"></i> {{post.likes.count}}</button>
+                                          </form>
+                                        </span>
                                     <span class="mx-2"><i class="fa-solid fa-comment fs-4"></i> {{post.comments.count}} </span>
                                 </div>
                                 <!-- date added -->

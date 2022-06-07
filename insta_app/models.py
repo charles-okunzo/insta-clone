@@ -13,10 +13,14 @@ class Post(models.Model):
     image_name = models.CharField(max_length=20, blank=True)
     image_caption = models.TextField()
     posted_date = models.DateTimeField(auto_now_add=True, null=True)
+    likes = models.ManyToManyField(User, related_name='post_likes', blank=True)
 
 
     def save_post(self):
         self.save()
+
+    def total_likes(self):
+        return self.likes.count()
 
 
     def delete_post(self):
@@ -50,13 +54,13 @@ class Comment(models.Model):
         return f"{self.content}"
 
 
-class Like(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='likes')
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+# class Like(models.Model):
+#     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='likes')
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
-    def __str__(self) -> str:
-        return f"{self.user.username} Likes"
+#     def __str__(self) -> str:
+#         return f"{self.user.username} Likes"
 
 
 #Create followers and follow
