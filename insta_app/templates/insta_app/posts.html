@@ -74,9 +74,13 @@
                             </div>
                             <!-- comments goes here -->
                             <div class="comments my-3" style="min-height: 40vh;">
+                              {% if post.comments.all %}
                               {% for comment in post.comments.all %}
                                 <span class="h6 me-2 py-2">{{comment.user}}</span>{{comment.content}}
                                 {% endfor %}
+                              {% else %}
+                              <span class="h6">No comments yet.</span>
+                              {% endif %}
                             </div>
 
                             <div class="post-content mb-4">
