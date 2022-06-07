@@ -19,9 +19,12 @@ def posts(request):
     comment_form = PostCommentForm()
     if request.method == 'POST':
         comment_form = PostCommentForm(request.POST)
-        if comment_form.is_valid():
-            comment_form.save()
+        # if comment_form.is_valid():
+        #     content = comment_form.cleaned_data['content']
+        #     post_id = 
 
+        #     comment_form.save()
+        print(request.POST)
         return redirect('posts')
     context = {
         'title':title,

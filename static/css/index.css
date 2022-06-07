@@ -5,7 +5,7 @@ h1{
 .register-bg, html, body{
     background-color: #fafafa;
 }
-small#hint_id_password1, small#hint_id_password2, small#hint_id_username{
+small#hint_id_password1, small#hint_id_password2, small#hint_id_username, .comment label{
     display: none;
 }
 
@@ -64,3 +64,8 @@ small#hint_id_password1, small#hint_id_password2, small#hint_id_username{
     }
 }
 
+.comment input{
+    width: 80%;
+    border: 1px solid #c1c1c1;
+    border-radius: 5px;
+}

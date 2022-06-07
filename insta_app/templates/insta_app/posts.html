@@ -32,10 +32,10 @@
                 <small class="text-muted">{{post.posted_date | timesince}} ago</small>
 
                 <!-- add comment form -->
-                <form class="navbar-form mt-4" role="search" action="">
+                <form class="navbar-form mt-4" role="search" action="" method="post">
 
                     <div class="input-group">
-                      <input type="text" class="form-control search" placeholder="Add a comment..." name="">
+                      <input type="text" class="form-control search" name="comment" placeholder="Add a comment..." name="">
                       <div class="input-group-btn">
                         <button class="btn btn-default" type="submit">Post</button>
                       </div>

@@ -8,10 +8,10 @@
         <div class="col-md-5 mx-auto mt-5 pt-5">
             {% if searched_accounts %}
             <div>
-                <h4>Found {{searched_accounts | length}} results of username {{message}}</h4>
+                <h4>Found {{searched_accounts | length}} results for {{message}}</h4>
             </div>
             {% else %}
-            <h4>Found 0 results of username {{message}}</h4>
+            <h4>Found 0 results for {{message}}</h4>
             {% endif %}
             
           {% if searched_accounts %}

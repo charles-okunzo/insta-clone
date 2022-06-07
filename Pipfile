@@ -8,6 +8,11 @@ django = "*"
 psycopg2 = "*"
 django-crispy-forms = "*"
 pillow = "*"
+gunicorn = "*"
+whitenoise = "*"
+django-heroku = "*"
+python-decouple = "*"
+dj-database-url = "*"
 
 [dev-packages]
 

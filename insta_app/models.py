@@ -38,10 +38,11 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    content = models.TextField()
+    content = models.CharField(max_length=100)
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
     posted_date = models.DateTimeField(auto_now_add=True, null=True)
+
 
 
 
