@@ -6,10 +6,10 @@
             <img src="../../../static/images/7a252de00b20.png" alt="" height="30">
         </div>
         <div class="col-md-3">
-            <form class="navbar-form" role="search" action="">
+            <form class="navbar-form" role="search" action="{% url 'search' %}">
 
                 <div class="input-group">
-                  <input type="text" class="form-control search" placeholder="Search" name="article">
+                  <input type="text" class="form-control search" placeholder="Search" name="search_username">
                   <div class="input-group-btn">
                     <button class="btn btn-default" type="submit"><i class="fas fa-search"></i></button>
                   </div>
@@ -32,7 +32,7 @@
                         <img src="{{user.profile.profile_pic.url}}" title="Profile picture" style="border-radius: 50%;" height="25" width="25">
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="{% url 'profile' %}"><i class="fa-solid fa-circle-user pe-2"></i> Profile</a></li>
+                      <li><a class="dropdown-item" href="{% url 'profile' user.username %}"><i class="fa-solid fa-circle-user pe-2"></i> Profile</a></li>
                       <li><a class="dropdown-item" href="{% url 'update' %}"><i class="fa-solid fa-gear pe-2"></i> Settings</a></li>
                       <li><hr class="dropdown-divider"></li>
                       <li><a class="dropdown-item" href="{% url 'logout' %}">Log Out</a></li>

@@ -66,3 +66,16 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
         return False
 
+def search_by_name(request):
+    if 'search_username' in request.GET and request.GET['search_username']:
+        search_term = request.GET.get('search_username')
+        searched_accounts  = Post.search_by_name(search_term)
+        message = f'{search_term}'
+        context = {
+            'searched_accounts': searched_accounts,
+            'message':message
+        }
+        return render(request, 'insta_app/search_accounts.html', context)
+    else:
+        message  = 'You have not searched any items'
+        return render(request, 'insta_app/search_accounts.html', {'message':message})

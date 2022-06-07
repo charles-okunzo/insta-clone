@@ -30,7 +30,8 @@ class Post(models.Model):
 
     @classmethod
     def search_by_name(cls, search_term):
-        cls.objects.filter(user__username__icontains = search_term).all()
+        serached_posts = cls.objects.filter(user__username__icontains = search_term)
+        return serached_posts
 
     def get_absolute_url(self):
         ...

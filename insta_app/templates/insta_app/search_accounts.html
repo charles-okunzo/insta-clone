@@ -5,10 +5,17 @@
 <div class="container-fluid register-bg">
     <div class="row">
         <!-- posts loop starts -->
-        
         <div class="col-md-5 mx-auto mt-5 pt-5">
-          {% if posts %}
-          {% for post in posts %}
+            {% if searched_accounts %}
+            <div>
+                <h4>Found {{searched_accounts | length}} results of username {{message}}</h4>
+            </div>
+            {% else %}
+            <h4>Found 0 results of username {{message}}</h4>
+            {% endif %}
+            
+          {% if searched_accounts %}
+          {% for post in searched_accounts %}
 
             <!-- post -->
             <div class="sign-up border p-3 my-3">
