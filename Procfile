@@ -1,1 +1,1 @@
-web: gunicorn instah-clone.wsgi
+web: gunicorn instagram.wsgi
