@@ -54,3 +54,13 @@ small#hint_id_password1, small#hint_id_password2, small#hint_id_username{
     margin: 1vh 0;
 }
 
+.border-right{
+    border-right: 1px solid skyblue;
+}
+
+@media only screen and (max-width:678px){
+    .border-right{
+        display: none;
+    }
+}
+

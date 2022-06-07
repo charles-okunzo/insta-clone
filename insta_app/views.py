@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
+from insta_app.forms import PostCommentForm
 from insta_app.models import Post
 from django.views.generic import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -15,9 +16,17 @@ def home(request):
 def posts(request):
     title  = 'Instagram | All posts'
     posts = Post.objects.order_by('-posted_date').all()
+    comment_form = PostCommentForm()
+    if request.method == 'POST':
+        comment_form = PostCommentForm(request.POST)
+        if comment_form.is_valid():
+            comment_form.save()
+
+        return redirect('posts')
     context = {
         'title':title,
-        'posts':posts
+        'posts':posts,
+        'comment_form':comment_form
     }
     return render(request, 'insta_app/posts.html', context)
 
