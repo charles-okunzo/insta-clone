@@ -69,7 +69,7 @@
                             </div>
                             <!-- comments goes here -->
                             <div class="comments my-3" style="min-height: 40vh;">
-                              {% for comment in post.comments %}
+                              {% for comment in post.comments.content %}
                                 {{comment}}
                                 {% endfor %}
                             </div>
