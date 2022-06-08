@@ -32,17 +32,17 @@
                   <img src="{{post.user.profile.profile_pic.url}}" title="Profile picture" style="border-radius: 50%;" height="30" width="30">
                   <span class=" ms-4 h6">{{post.user.username}}</span>
                   <span class=" ms-2">{{post.image_caption}}</span>
-              </div>
+                </div>
                 <!-- date added -->
                 <small class="text-muted">{{post.posted_date | timesince}} ago</small>
 
                 <!-- add comment form -->
                 <form class="navbar-form mt-4" action="" method="post">
-
+                    {% csrf_token %}
                     <div class="input-group">
-                      <input type="text" class="form-control search" name="comment" placeholder="Add a comment..." name="">
+                      <input type="text" class="form-control search" name="comment" placeholder="Add a comment...">
                       <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit">Post</button>
+                        <button class="btn btn-default" name="post-id" value="{{post.id}}" type="submit">Post</button>
                       </div>
                     </div>
           
@@ -97,7 +97,7 @@
                             <small class="text-muted">{{post.posted_date | date:"d-F Y"}}</small>
 
                             <!-- add comment form -->
-                            <form class="navbar-form mt-4" role="search" action="">
+                            <form class="navbar-form mt-4" action="">
 
                                 <div class="input-group">
                                   <input type="text" class="form-control search" placeholder="Add a comment..." name="">
@@ -106,6 +106,7 @@
                                   </div>
                                 </div>
                             </form>
+                            </div>
                         </div>
                     </div>
                   </div> 

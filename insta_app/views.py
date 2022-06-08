@@ -4,7 +4,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from insta_app.forms import PostCommentForm
-from insta_app.models import Post
+from insta_app.models import Comment, Post
 from django.views.generic import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
@@ -22,12 +22,16 @@ def posts(request):
     comment_form = PostCommentForm()
     if request.method == 'POST':
         comment_form = PostCommentForm(request.POST)
-        # if comment_form.is_valid():
-        #     content = comment_form.cleaned_data['content']
-        #     post_id = 
-
-        #     comment_form.save()
+        if comment_form.is_valid():
+            comment_form = PostCommentForm(request.POST)
+            content = request.POST.get('comment')
+            user = request.user.id
+            post_id = request.POST.get('post-id')
+            comment_ins = Comment(content = content, post = post_id, user = user)
+            comment_ins.save()
+            return redirect('posts')
         print(request.POST)
+        print(request.user.id)
         return redirect('posts')
     context = {
         'title':title,
