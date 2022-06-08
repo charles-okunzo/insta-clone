@@ -1,5 +1,5 @@
 
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse, reverse_lazy
@@ -106,6 +106,7 @@ def postLike(request, pk):
         post.likes.remove(user)
     else:
         post.likes.add(user)
+    data = {'data':'Like added'}
 
     return HttpResponseRedirect(reverse('posts'))
 

@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+}
 h1{
     color: red;
 }
@@ -46,12 +51,12 @@ small#hint_id_password1, small#hint_id_password2, small#hint_id_username, .comme
     cursor: pointer;
 }
 
-/* .register label{
+.register label{
     display: none;
-} */
+}
 
 .register input{
-    margin: 1vh 0;
+    margin: 1.8vh 0;
 }
 
 .border-right{

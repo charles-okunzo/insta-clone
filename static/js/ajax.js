@@ -2,11 +2,13 @@
 //     $('form.like').submit((e)=>{
 //         e.preventDefault()
 //         form = $('form.like')
-        
+//         var likeBtn = $('button[name="post-id"]').val().trim();
 //         $.ajax({
-//             'url':'/likes/',
+//             'url':"{% url 'post_like' %}",
 //             'type':'POST',
-//             'data': form.serialize(),
+//             'data': {
+//                 'post-id': likeBtn
+//             },
 //             'dataType':'json',
 //             'success':function(data){
 //                 alert(data['success'])
