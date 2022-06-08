@@ -56,7 +56,7 @@ small#hint_id_password1, small#hint_id_password2, small#hint_id_username, .comme
 }
 
 .register input{
-    margin: 1.8vh 0;
+    margin: 2vh 0;
 }
 
 .border-right{
