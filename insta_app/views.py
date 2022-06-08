@@ -2,7 +2,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from insta_app.forms import PostCommentForm
 from insta_app.models import Comment, Post
 from django.views.generic import CreateView, UpdateView, DeleteView
@@ -67,7 +67,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
-    success_url = '/profile'
+    
 
 
     def test_func(self):
@@ -75,6 +75,12 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == post.user:
             return True
         return False
+    
+    #after the deleting redirect to this url and pass in the arguments
+    def get_success_url(self, **kwargs):
+        if  kwargs != None:
+            return reverse_lazy('profile', kwargs = {'username': self.request.user.username})
+        
 
 def search_by_name(request):
     if 'search_username' in request.GET and request.GET['search_username']:

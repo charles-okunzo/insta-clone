@@ -14,7 +14,7 @@
                     </fieldset>
                     <br>
                     <input type="submit" value="Yes, Delete" class="btn btn-outline-danger my-4">
-                    <a href="{% url 'profile' %}" class="btn btn-outline-secondary my-4">Cancel</a>
+                    <a href="{% url 'profile' object.user.username %}" class="btn btn-outline-secondary my-4">Cancel</a>
 
                 </form>
             </div>
