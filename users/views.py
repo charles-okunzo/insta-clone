@@ -3,6 +3,8 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from insta_app.models import Post
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from django.contrib.auth.models import User
+
 
 # Create your views here.
 
@@ -22,6 +24,14 @@ def register(request):
 def profile(request, username):
     posts = Post.objects.filter(user__username = request.user.username).all()
     # posts = Post.objects.order_by('-posted_date')
+    if request.user.username != username:
+        posts = Post.objects.filter(user__username = username).all()
+        post_owner = User.objects.get(username = username)
+        context = {
+        'posts':posts,
+        'post_owner': post_owner
+        }
+        return render(request, 'users/other_user_profile.html', context)
 
     context = {
         'posts':posts,

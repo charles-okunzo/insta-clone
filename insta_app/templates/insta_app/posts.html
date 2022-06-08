@@ -13,7 +13,8 @@
             <!-- post -->
             <div class="sign-up border p-3 my-3">
                 <img src="{{post.user.profile.profile_pic.url}}" title="Profile picture" alt="{{post.user.username}} profile picture" style="border-radius: 50%;" height="30" width="30">
-                <span class=" ms-4 h5">{{post.user.username}}</span>
+                <span class=" ms-4 h5"><a href="{% url 'profile' post.user %}">{{post.user.username}}</a></span>
+                
                 <div class="image my-4">
                     <img src="{{post.image_path.url}}" class="img-fluid m-0" alt="{{post.image_name}}" style="object-fit: cover; width: 100%;">
                 </div>

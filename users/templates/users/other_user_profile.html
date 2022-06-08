@@ -1,0 +1,137 @@
+{% extends 'insta_app/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="register-bg">
+    <div class="container">
+        <div class="row mt-5 pt-3">
+            <div class="col-md-2"></div>
+            <div class="col-md-2 mt-5">
+                <img src="{{post_owner.profile.profile_pic.url}}" class="pointer" title="Profile picture" style="border-radius: 50%;" height="150" width="150">
+            </div>
+            <div class="col-md-6 mt-5">
+                <h5>{{post_owner.username}} <a href="{% url 'update' %}">
+                    <button class="btn btn-outline-primary ms-4">Follow</button></a></h5>
+                <p class="my-4">
+                    <span class="me-2">
+                        <span class="h6">{{posts.count}}</span> posts
+                    </span>
+                    <span class="mx-2">
+                        <span class="h6">{{post_owner.followers.count}}</span> followers
+                    </span>
+                    <span class="mx-2">
+                        <span class="h6">{{post_owner.following.count}}</span> following
+                    </span>
+                </p>
+    
+                <h6>{{post_owner.first_name}} {{post_owner.last_name}}</h6>
+    
+                <p>{{post_owner.profile.bio}}</p>
+            </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-9 mx-auto">
+                <h4><i class="fa-solid fa-table-cells"></i> POSTS</h4>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9 mx-auto"><hr></div>
+        </div>
+        <div class="row mx-auto d-flex  justify-content-center" style="width: 65vw;">
+                {% if posts %}
+                {% for post in posts %}
+                <div class="col-md-4  my-2">
+                <div data-bs-toggle="modal" data-bs-target="#exampleModal{{post.pk}}">
+                    <div class="post-div pointer" style="background-image: url({{post.image_path.url}});">
+                        <div class="overlay text-white text-center" style="display: grid; place-items: center; height: 100%;">
+                            <div class="post-content">
+                                <span class="mx-2"><i class="fa-solid fa-heart"></i> {{post.likes.count}}</span>
+                                <span class="mx-2"><i class="fa-solid fa-comment"></i> {{post.comments.count}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <!-- user post modal -->
+                    <div class="modal fade" id="exampleModal{{post.pk}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="container">
+                            <div class="row">
+                                <div class="col-md-6">
+                                <img style="height: 100%; width: auto; object-fit: cover;" src="{{post.image_path.url}}" alt="{{post.image_name}} image" class="img-responsive img-fluid">
+                                </div>
+        
+                                <div class="col-md-6 line">
+                                <div class="my-3">
+                                    <img src="{{user.profile.profile_pic.url}}" title="Profile picture" style="border-radius: 50%;" height="30" width="30">
+                                    <span class=" ms-4 h6">{{user.username}}</span>
+                                    <button type="button" class="btn-close" style="float: right;" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <div class="mt-2">
+                                    {% if post.user == user %}
+                                        <a href="{% url 'update-caption' post.id%}" class="btn btn-outline-secondary">Update caption</a>
+                                        <a href="{% url 'delete-post' post.id%}" class="btn btn-outline-danger">Delete Post</a>
+                                    {% endif %}
+                                    </div>
+                                </div><hr>
+                                    <!-- captions goes here -->
+                                <div>
+                                    <img src="{{user.profile.profile_pic.url}}" title="Profile picture" style="border-radius: 50%;" height="30" width="30">
+                                    <span class=" ms-4 h6">{{user.username}}</span>
+                                    <span class=" ms-3">{{post.image_caption}}</span>
+                                </div>
+                                <!-- comments goes here -->
+                                <div class="comments my-3" style="min-height: 40vh;">
+                                    {% if post.comments.all %}
+                                    {% for comment in post.comments.all %}
+                                      <span class="h6 me-2 py-2">{{comment.user}}</span>{{comment.content}}
+                                      {% endfor %}
+                                    {% else %}
+                                    <span class="h6">No comments yet.</span>
+                                    {% endif %}
+                                  </div>
+
+                                <div class="post-content mb-4">
+                                <span style="display: inline-block;" class="mx-2 pointer">
+                                    <form class="like" action="{% url 'post_like' pk=post.id %}" method="post">
+                                        {% csrf_token %}
+                                        <button style="border-style: none; background-color: transparent;" type="submit" name="post-id" value="{{post.id}}"><i style="color: red;" class="fa-solid fa-heart fs-4"></i> {{post.likes.count}}</button>
+                                    </form>
+                                    </span>
+                                    <span class="mx-2"><i class="fa-solid fa-comment fs-4"></i> {{post.comments.count}} </span>
+                                </div>
+                                <!-- date added -->
+                                <small class="text-muted">{{post.posted_date | date:"d-F Y"}}</small>
+
+                                <!-- add comment form -->
+                                <form class="navbar-form mt-4" role="search" action="">
+
+                                    <div class="input-group">
+                                        <input type="text" class="form-control search" placeholder="Add a comment..." name="">
+                                        <div class="input-group-btn">
+                                        <button class="btn btn-default" type="submit">Post</button>
+                                        </div>
+                                    </div>
+                            
+                                </form>
+                            </div>
+                        </div>
+                        </div> 
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+                <!-- user modal ends -->
+                {% empty %}
+                <h3 class="text-center">No posts yets!</h3>
+                {% endfor %}
+                {% endif %}
+            
+        </div>
+    </div>
+</div>
+{% endblock %}
