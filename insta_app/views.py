@@ -24,11 +24,12 @@ def posts(request):
         comment_form = PostCommentForm(request.POST)
         if comment_form.is_valid():
             comment_form = PostCommentForm(request.POST)
-            content = request.POST.get('comment')
-            user = request.user.id
+            user = request.user
             post_id = request.POST.get('post-id')
-            comment_ins = Comment(content = content, post = post_id, user = user)
-            comment_ins.save()
+            post = Post.objects.get(pk=post_id)
+            comment_form.instance.user = user #get user posting the comment
+            comment_form.instance.post = post #gets the comment being posted on
+            comment_form.save()
             return redirect('posts')
         print(request.POST)
         print(request.user.id)
@@ -76,7 +77,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
         return False
     
-    #after the deleting redirect to this url and pass in the arguments
+    #after the deleting redirect to this url and pass in the argumenst
     def get_success_url(self, **kwargs):
         if  kwargs != None:
             return reverse_lazy('profile', kwargs = {'username': self.request.user.username})
