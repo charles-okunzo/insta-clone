@@ -64,8 +64,8 @@ class Comment(models.Model):
 
 #Create followers and follow
 class Follow(models.Model):
-    following = models.ForeignKey(User, on_delete=models.CASCADE, related_name='following', null=True)
-    followers = models.ForeignKey(User, on_delete=models.CASCADE, related_name='followers', null=True)
+    follower = models.ForeignKey(User, on_delete=models.CASCADE, related_name='following', null=True)
+    followed = models.ForeignKey(User, on_delete=models.CASCADE, related_name='followers', null=True)
 
     def __str__(self) -> str:
         return f"{self.follower}"

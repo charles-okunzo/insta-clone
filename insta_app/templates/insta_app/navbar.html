@@ -1,11 +1,11 @@
 {% if user.is_authenticated %}
-<nav class="container-fluid py-2 navbar-expand-lg navbar-light fixed-top bg-white">
+<nav class="container-fluid py-2 navbar-light fixed-top bg-white">
     <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-2">
+        <div class="col-2 dissappear"></div>
+        <div class="col-2">
             <img src="../../../static/images/7a252de00b20.png" alt="" height="30">
         </div>
-        <div class="col-md-3">
+        <div class="col-3">
             <form class="navbar-form" role="search" action="{% url 'search' %}">
 
                 <div class="input-group">
@@ -17,12 +17,15 @@
       
               </form>
         </div>
-        <div class="col-md-3 text-center">
-            
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mb-2 mb-lg-0 d-flex justify-content-between">
+        <div class="col-3 text-center">
+          
+            <div class="navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0 d-flex flex-row justify-content-between">
                   <li class="nav-item px-2">
                     <a class="nav-link active" aria-current="page" href="{% url 'posts' %}"><i class="fa-solid fa-house fa-icon"></i></a>
+                  </li>
+                  <li class="nav-item px-2">
+                    <a class="nav-link active" aria-current="page" href="#"><i class="fab fa-facebook-messenger fa-icon"></i></a>
                   </li>
                   <li class="nav-item px-2">
                     <a class="nav-link" href="{% url 'create-post' %}"><i class="fa-regular fa-square-plus fa-icon"></i></a>
@@ -41,7 +44,7 @@
                 </ul>
             </div>
         </div>
-        <div class="col-md-2"></div>
+        <div class="col-2 dissappear"></div>
     </div>
 </nav><hr class="m-0">
 {% endif %}

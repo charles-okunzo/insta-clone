@@ -11,8 +11,12 @@
             </div>
             <div class="col-md-6 mt-5">
                 <h5>{{post_owner.username}} <a href="{% url 'update' %}">
-                    <button class="btn btn-outline-primary ms-4">Follow</button></a></h5>
+                    {% if follow_status %}
+                    <a href="{% url 'unfollow' post_owner.id %}" class="btn btn-primary ms-4">Following</a></a></h5>
+                    {% else %}
+                    <a href="{% url 'follow' post_owner.id %}" class="btn btn-outline-primary ms-4">Follow</a></a></h5>
                 <p class="my-4">
+                    {% endif %}
                     <span class="me-2">
                         <span class="h6">{{posts.count}}</span> posts
                     </span>

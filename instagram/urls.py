@@ -32,7 +32,9 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name = 'users/logout.html'), name='logout'),
     path('post/new/', PostCreateView.as_view(), name='create-post'),
     path('post/<int:pk>/update', PostUpdateView.as_view(), name='update-caption'),
-    path('post/<int:pk>/delete', PostDeleteView.as_view(), name='delete-post')
+    path('post/<int:pk>/delete', PostDeleteView.as_view(), name='delete-post'),
+    path('follow/<int:id>', users_views.follow_user, name='follow'),
+    path('unfollow/<int:id>', users_views.unfollow_user, name='unfollow')
 
 
 ]

@@ -23,7 +23,7 @@ small#hint_id_password1, small#hint_id_password2, small#hint_id_username, .comme
 }
 
 .fa-icon{
-    font-size: 3vh;
+    font-size: 1.2em;
 }
 
 .post-div{
@@ -64,9 +64,10 @@ small#hint_id_password1, small#hint_id_password2, small#hint_id_username, .comme
 }
 
 @media only screen and (max-width:678px){
-    .border-right{
+    .border-right, .navbar-form,.dissappear{
         display: none;
     }
+    
 }
 
 .comment input[name='content']{

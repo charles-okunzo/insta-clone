@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
-from insta_app.models import Post
+from insta_app.models import Follow, Post
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.models import User
 
@@ -23,14 +23,26 @@ def register(request):
 @login_required
 def profile(request, username):
     posts = Post.objects.filter(user__username = request.user.username).all()
-    # posts = Post.objects.order_by('-posted_date')
-    if request.user.username != username:
+    if request.user.username != username: #if selected user is not the current logged in used redirect
         posts = Post.objects.filter(user__username = username).all()
         post_owner = User.objects.get(username = username)
+        
+
+        followers = Follow.objects.filter(followed = post_owner.id)
+        follow_status = False
+        for follower in followers:
+            if request.user.id == follower.follower.id:
+                follow_status = True
+                break
+            else:
+                follow_status = False
+
         context = {
         'posts':posts,
-        'post_owner': post_owner
+        'post_owner': post_owner,
+        'follow_status':follow_status
         }
+    
         return render(request, 'users/other_user_profile.html', context)
 
     context = {
@@ -60,3 +72,17 @@ def update(request):
     }
 
     return render(request, 'users/update.html', context)
+
+
+def follow_user(request,id):
+    if request.method =='GET':
+        user_to_follow = User.objects.get(pk=id)
+        follow = Follow(follower = request.user, followed = user_to_follow)
+        follow.save()
+        return redirect('profile', username = user_to_follow.username)
+def unfollow_user(request, id):
+    if request.method == 'GET':
+        user_to_unfollow = User.objects.get(pk=id)
+        unfollow = Follow.objects.filter(follower = request.user, followed = user_to_unfollow)
+        unfollow.delete()
+        return redirect('profile', username = user_to_unfollow.username)
