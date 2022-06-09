@@ -72,7 +72,7 @@
                                     <div class="mt-2">
                                     {% if post.user == user %}
                                         <a href="{% url 'update-caption' post.id%}" class="btn btn-outline-secondary">Update caption</a>
-                                        <a href="{% url 'delete-post' post.id%}" class="btn btn-outline-danger">Delete Post</a>
+                                        <a href="{% url 'delete-post' post.id%}" class="btn btn-outline-danger mt-2">Delete Post</a>
                                     {% endif %}
                                     </div>
                                 </div><hr>
