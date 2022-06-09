@@ -67,6 +67,11 @@ small#hint_id_password1, small#hint_id_password2, small#hint_id_username, .comme
     .border-right, .navbar-form,.dissappear{
         display: none;
     }
+
+    .navbar-nav{
+        justify-content: flex-end;
+        margin-left: 20%;
+    }
     
 }
 
