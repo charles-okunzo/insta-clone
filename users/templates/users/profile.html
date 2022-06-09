@@ -10,20 +10,20 @@
                 <img src="{{user.profile.profile_pic.url}}" class="pointer" title="Profile picture" style="border-radius: 50%;" height="150" width="150">
             </div>
             <div class="col-md-6 mt-5">
-                <h5>{{user.username}} <a href="{% url 'update' %}"><button class="btn btn-light border ms-4">Edit profile</button></a></h5>
+                <h5 class="fw-bold">{{user.username}} <a href="{% url 'update' %}"><button class="btn btn-light border ms-4">Edit profile</button></a></h5>
                 <p class="my-4">
                     <span class="me-2">
-                        <span class="h6">{{posts.count}}</span> posts
+                        <span class="h6 fw-bold">{{posts.count}}</span> posts
                     </span>
                     <span class="mx-2">
-                        <span class="h6">{{user.followers.count}}</span> followers
+                        <span class="h6 fw-bold">{{user.followers.count}}</span> followers
                     </span>
                     <span class="mx-2">
-                        <span class="h6">{{user.following.count}}</span> following
+                        <span class="h6 fw-bold">{{user.following.count}}</span> following
                     </span>
                 </p>
     
-                <h6>{{user.first_name}} {{user.last_name}}</h6>
+                <h5 class="fw-bold">{{user.first_name}} {{user.last_name}}</h6>
     
                 <p>{{user.profile.bio}}</p>
             </div>

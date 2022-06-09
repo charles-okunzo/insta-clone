@@ -23,7 +23,7 @@ small#hint_id_password1, small#hint_id_password2, small#hint_id_username, .comme
 }
 
 .fa-icon{
-    font-size: 1.2em;
+    font-size: 1.5em;
 }
 
 .post-div{
@@ -73,4 +73,8 @@ small#hint_id_password1, small#hint_id_password2, small#hint_id_username, .comme
 .comment input[name='content']{
     width: 85%;
     border-radius: 5px;
+}
+
+.underline:hover{
+    text-decoration: underline;
 }
